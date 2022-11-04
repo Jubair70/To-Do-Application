@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import itemStyles from './item.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteItem } from '../../store/todoSlice';
-import ItemForm from '../item-form/item-form.component';
+import { deleteItem, editItem } from '../../store/todoSlice';
 const Item = ({ item
   // , handleComplete, handleRemove 
 }) => {
@@ -15,24 +14,18 @@ const Item = ({ item
   }
 
   const handleEdit = (itemId)=>{
-    return (
-      <>
-      <ItemForm/>
-      </>
-    );
+    dispatch(editItem(itemId));
   }
   return (
     <div
-      className={`${itemStyles.root} ${item.completed ? itemStyles.completed : ''}`}
-      // onClick={handleComplete(item.id)}
+      className={itemStyles.root}
     >
-      <div>
+      
       <label className={itemStyles.label}>
         {/* <span className={itemStyles.checkbox} /> */}
-        <div>{JSON.parse(item.text).title}</div>
-        <div>{JSON.parse(item.text).description}</div>
+        <div className={itemStyles.break}>{JSON.parse(item.text).title}</div>
+        <div className={itemStyles.break}>{JSON.parse(item.text).description}</div>
       </label>
-      </div>
       <div>
       <button className={itemStyles.remove}
        onClick={()=>handleEdit(item.id)}

@@ -1,23 +1,13 @@
-import Head from 'next/head';
-import List from '../component/item-list/item-list.component';
-import Item from '../component/item/item.component';
-import {  useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import ItemForm from '../component/item-form/item-form.component';
-
-
+import Head from "next/head";
+import List from "../component/item-list/item-list.component";
+import Item from "../component/item/item.component";
+import { useSelector } from "react-redux";
+import ItemForm from "../component/item-form/item-form.component";
+import { PaginatedList } from "react-paginated-list";
+import { ControlContainer, ControlItem } from "./pagination.styles";
 
 const Home = () => {
-  // const items = [
-  // { id: Math.random(), text: JSON.stringify({title:'hello',description:'what the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hellwhat the hell'}) },
-  // { id: Math.random(), text: JSON.stringify({title:'nice',description:'to meet you'}) },
-  // { id: Math.random(), text: JSON.stringify({title:'name',description:'Jubair you shit'}) },
-  // { id: Math.random(), text: JSON.stringify({title:'shut up',description:'fuck up'}) },
-  // ];
-  
-  const items = useSelector(state=>state.todo.items);
-
-  console.log(" In __Index ",items);
+  const items = useSelector((state) => state.todo.items);
   return (
     <>
       <Head>
@@ -26,20 +16,38 @@ const Home = () => {
       <div className="container">
         <List title="To Do list">
           <ItemForm />
-          
-           
-          {items.map(item => (
-            <Item
-              key={item.id}
-              item={item}
-              // handleComplete={handleCompleteItem}
-              // handleRemove={handleRemoveItem}
-            />
-          ))}
+          <PaginatedList
+            list={items}
+            itemsPerPage={3}
+            currentPage={1}
+            displayRange={2}
+            leftMargin={1}
+            rightMargin={1}
+            controlClass={"pagination-control"}
+            ControlContainer={ControlContainer}
+            ControlItem={ControlItem}
+            breakText={"..."}
+            breakClass={"pagination-break"}
+            loadingItem={() => <p>Loading...</p>}
+            loopAround={true}
+            nextText="Next"
+            prevText="Prev"
+            useMinimalControls={false}
+            renderList={(list) => (
+              <>
+                {list.map((item) => (
+                  <Item
+                    key={item.id}
+                    item={item}
+                  />
+                ))}
+              </>
+            )}
+          />
         </List>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Home;

@@ -19,6 +19,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## Features
 
 - CRUD Operations
+- List View with Pagination(default 3 items)
 - Toastified Actions
 - ToolTip
 

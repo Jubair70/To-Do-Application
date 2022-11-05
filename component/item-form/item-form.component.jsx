@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import formStyles from "./item-form.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, clearData, deleteItem } from "../../store/todoSlice";
+import {toast } from 'react-toastify';
+
 
 const ItemForm = () => {
   const editFormData = useSelector((state) => state.todo.formData);
@@ -37,11 +39,31 @@ const ItemForm = () => {
       setFormData((prevState) => {
         return { editId: 0, title: "", description: "" };
       });
+      toast.success('Modified Successfully !!!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark"
+        });
     } else if (formData.title && formData.description) {
       dispatch(addItem({ id: Math.random(), text: JSON.stringify(formData) }));
       setFormData((prevState) => {
         return { title: "", description: "" };
       });
+      toast.success('Added Successfully !!!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark"
+        });
     }
   };
   return (

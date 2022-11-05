@@ -165,7 +165,7 @@
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 60px;
+  width: 80px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -175,8 +175,8 @@
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
-  top: -5px;
-  left: 105%;
+  top: -29px;
+  left: 49%;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;

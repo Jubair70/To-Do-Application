@@ -2,19 +2,32 @@ import React from "react";
 import itemStyles from "./item.module.css";
 import { useDispatch } from "react-redux";
 import { deleteItem, editItem } from "../../store/todoSlice";
+import {toast } from 'react-toastify';
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleRemove = (itemId) => {
     dispatch(deleteItem(itemId));
+    toast.success('Removed Successfully !!!', {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "dark"
+      });
   };
 
   const handleEdit = (itemId) => {
     dispatch(editItem(itemId));
+    
   };
 
   return (
+    <>
     <div className={itemStyles.root}>
       <label className={itemStyles.label}>
         <div className={itemStyles.break}>{JSON.parse(item.text).title}</div>
@@ -54,6 +67,9 @@ const Item = ({ item }) => {
         </div>
       </div>
     </div>
+
+    </>
+    
   );
 };
 

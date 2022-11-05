@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
   items: [],
   formData: {
@@ -25,6 +26,7 @@ const todoSlice = createSlice({
         (item, index) => item.id !== action.payload
       );
       localStorage.removeItem(action.payload);
+     
     },
     editItem: (state, action) => {
       const obj = JSON.parse(localStorage.getItem(action.payload));

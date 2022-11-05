@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import ItemForm from "../component/item-form/item-form.component";
 import { PaginatedList } from "react-paginated-list";
 import { ControlContainer, ControlItem } from "./pagination.styles";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
   const items = useSelector((state) => state.todo.items);
   return (
@@ -46,6 +47,18 @@ const Home = () => {
           />
         </List>
       </div>
+      <ToastContainer
+position="bottom-right"
+autoClose={2000}
+hideProgressBar
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable={false}
+pauseOnHover
+theme="dark"
+/>
     </>
   );
 };

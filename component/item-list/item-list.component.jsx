@@ -6,7 +6,7 @@ const TodoList = ({ title, children, handlerRemoveCompleted }) => {
     <>
       {children && (
         <section className={listStyles.root}>
-          {title && <h4 className={listStyles.title}>{title}</h4>}
+          {title && <h4 className={listStyles.title} data-testid="header">{title}</h4>}
           <div className={listStyles.items}>{children}</div>
         </section>
       )}

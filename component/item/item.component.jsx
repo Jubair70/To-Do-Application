@@ -3,7 +3,6 @@ import itemStyles from "./item.module.css";
 import { Provider, useDispatch } from "react-redux";
 import { deleteItem, editItem } from "../../store/todoSlice";
 import {toast } from 'react-toastify';
-import store from "../../store/store";
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();

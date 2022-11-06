@@ -76,6 +76,7 @@ const ItemForm = () => {
           name="title"
           value={formData.title}
           placeholder="Title"
+          data-testid = "title"
         />
 
         <input
@@ -85,6 +86,7 @@ const ItemForm = () => {
           name="description"
           value={formData.description}
           placeholder="Description"
+          data-testid = "description"
         />
       </form>
       <a

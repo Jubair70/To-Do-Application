@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
+    "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "jest": "^29.2.2",
     "jest-environment-jsdom": "^29.2.2",
     "next": "13.0.1",

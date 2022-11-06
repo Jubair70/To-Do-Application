@@ -1,8 +1,9 @@
 import React from "react";
 import itemStyles from "./item.module.css";
-import { useDispatch } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { deleteItem, editItem } from "../../store/todoSlice";
 import {toast } from 'react-toastify';
+import store from "../../store/store";
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
@@ -28,16 +29,17 @@ const Item = ({ item }) => {
 
   return (
     <>
+    
     <div className={itemStyles.root}>
       <label className={itemStyles.label}>
-        <div className={itemStyles.break}>{JSON.parse(item.text).title}</div>
-        <div className={itemStyles.break}>
+        <div className={itemStyles.break} data-testid="title">{JSON.parse(item.text).title}</div>
+        <div className={itemStyles.break} data-testid="description">
           {JSON.parse(item.text).description}
         </div>
       </label>
       <div>
         <div className={itemStyles.tooltip}>
-            <span className={itemStyles.tooltiptext}>Edit</span>
+            <span className={itemStyles.tooltiptext} >Edit</span>
             <button
           className={itemStyles.remove}
           onClick={() => handleEdit(item.id)}
@@ -67,7 +69,7 @@ const Item = ({ item }) => {
         </div>
       </div>
     </div>
-
+    
     </>
     
   );
